@@ -1,0 +1,1497 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Provides APIs for mapping of make and model, sub model and variants for differen consumers like Wordpress, Frontend and DatGroup Mapper, carBasicData",
+    "version": "2.0.0",
+    "title": "Car Makemodel Mapping endpoints"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "mapping",
+      "description": ""
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "firebase": {
+      "authorizationUrl": "",
+      "flow": "implicit",
+      "type": "oauth2",
+      "x-google-issuer": "https://securetoken.google.com/auto-de-not-production",
+      "x-google-jwks_uri": "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com",
+      "x-google-audiences": "auto-de-not-production"
+    }
+  },
+  "host": "autode-dev.de",
+  "paths": {
+    "/service/car-makemodel-mapping/api/v1/mapping": {
+      "get": {
+        "summary": "mappingAction",
+        "description": "all makers",
+        "operationId": "mappingAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "source",
+            "required": true,
+            "in": "query",
+            "description": "Name of source (autode or mobilede)"
+          },
+          {
+            "type": "string",
+            "name": "target",
+            "required": true,
+            "in": "query",
+            "description": "Name of target (autode or mobilede)"
+          },
+          {
+            "type": "string",
+            "name": "make",
+            "required": true,
+            "in": "query",
+            "description": "Name of make"
+          },
+          {
+            "type": "string",
+            "name": "model",
+            "required": true,
+            "in": "query",
+            "description": "Name of model"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MappingResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/makers": {
+      "get": {
+        "summary": "getMakersAction",
+        "description": "all makers",
+        "operationId": "getMakersInformation",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MakerGroupedResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/models": {
+      "get": {
+        "summary": "getMakersAction",
+        "description": "all makers",
+        "operationId": "getAvailableMakersAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "month",
+            "required": false,
+            "in": "query",
+            "description": "Month"
+          },
+          {
+            "type": "string",
+            "name": "year",
+            "required": false,
+            "in": "query",
+            "description": "Year"
+          },
+          {
+            "type": "string",
+            "name": "maker",
+            "required": false,
+            "in": "query",
+            "description": "Maker name"
+          },
+          {
+            "type": "string",
+            "name": "maker_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of maker"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/SerieResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/years": {
+      "get": {
+        "summary": "getAvailableYearsAction",
+        "description": "all available instances of machines for a given period",
+        "operationId": "getAvailableYearsAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "model_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of model"
+          },
+          {
+            "type": "number",
+            "name": "maker_id",
+            "required": true,
+            "in": "query",
+            "description": "ID of maker"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProduceYearsResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/general_grouped_information": {
+      "get": {
+        "summary": "getGeneralGroupedAction",
+        "description": "all grouped info for a given period. You can pass optional fields to change the response",
+        "operationId": "getGeneralGroupedAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "vehicle_type_name",
+            "required": false,
+            "in": "query",
+            "description": "Name of Vehicle type"
+          },
+          {
+            "type": "string",
+            "name": "doors",
+            "required": false,
+            "in": "query",
+            "description": "Doors count"
+          },
+          {
+            "type": "string",
+            "name": "fuel",
+            "required": false,
+            "in": "query",
+            "description": "Fuel type"
+          },
+          {
+            "type": "string",
+            "name": "sub_model_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of submodel"
+          },
+          {
+            "type": "number",
+            "name": "month",
+            "required": true,
+            "in": "query",
+            "description": "Month"
+          },
+          {
+            "type": "number",
+            "name": "year",
+            "required": true,
+            "in": "query",
+            "description": "Year"
+          },
+          {
+            "type": "number",
+            "name": "model_id",
+            "required": true,
+            "in": "query",
+            "description": "ID of model"
+          },
+          {
+            "type": "number",
+            "name": "maker_id",
+            "required": true,
+            "in": "query",
+            "description": "ID of maker"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/GeneralGroupInformationResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/variants": {
+      "get": {
+        "summary": "getSeriesAction",
+        "description": "get models by some filters",
+        "operationId": "getSeriesAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "vehicle_type_name",
+            "required": true,
+            "in": "query",
+            "description": "Name of Vehicle type"
+          },
+          {
+            "type": "string",
+            "name": "doors",
+            "required": true,
+            "in": "query",
+            "description": "Doors count"
+          },
+          {
+            "type": "string",
+            "name": "fuel",
+            "required": true,
+            "in": "query",
+            "description": "Fuel type"
+          },
+          {
+            "type": "number",
+            "name": "month",
+            "required": true,
+            "in": "query",
+            "description": "Month"
+          },
+          {
+            "type": "number",
+            "name": "year",
+            "required": true,
+            "in": "query",
+            "description": "Year"
+          },
+          {
+            "type": "number",
+            "name": "sub_model_id",
+            "required": true,
+            "in": "query",
+            "description": "ID of submodel"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ShortSubModelVariantDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/information/model_variant/{dat_e_code}": {
+      "get": {
+        "summary": "getMasterDataForDatECodeAction",
+        "description": "Get's master data for DatECode",
+        "operationId": "getMasterDataForDatECodeAction",
+        "parameters": [
+          {
+            "type": "boolean",
+            "name": "with_variant_data",
+            "required": true,
+            "in": "query"
+          },
+          {
+            "type": "string",
+            "name": "dat_e_code",
+            "required": true,
+            "in": "path",
+            "description": "DatECode code from DatGroup"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MasterDatECodeResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/tree/makers": {
+      "post": {
+        "summary": "getMakersAction",
+        "description": "all makers info",
+        "operationId": "getMakersAction",
+        "parameters": [
+          {
+            "name": "is_word_press",
+            "required": false,
+            "in": "query",
+            "description": "Show only makers for WP",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit",
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset",
+            "type": "string"
+          },
+          {
+            "name": "maker",
+            "required": false,
+            "in": "query",
+            "description": "Maker name",
+            "type": "string"
+          },
+          {
+            "name": "maker_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of maker",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MakerResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/tree/wp-series": {
+      "post": {
+        "summary": "getWordPressSerieAction",
+        "description": "all wordpress series info",
+        "operationId": "getWordPressSerieAction",
+        "parameters": [
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit",
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset",
+            "type": "string"
+          },
+          {
+            "name": "serie_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of serie",
+            "type": "string"
+          },
+          {
+            "name": "maker_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of maker",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WordPressSerieResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/tree/wp-sub-series": {
+      "post": {
+        "summary": "getWordPressSubSeriessAction",
+        "description": "all wordpress sub series info",
+        "operationId": "getWordPressSubSeriessAction",
+        "parameters": [
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit",
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset",
+            "type": "string"
+          },
+          {
+            "name": "wp_sub_serie_id",
+            "required": false,
+            "in": "query",
+            "description": "wordpress subserie ID",
+            "type": "string"
+          },
+          {
+            "name": "wp_serie_id",
+            "required": false,
+            "in": "query",
+            "description": "wordpress serie ID",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/WordPressSubSerieResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/tree/variants": {
+      "post": {
+        "summary": "getVariantsAction",
+        "description": "all variants info",
+        "operationId": "getVariantsAction",
+        "parameters": [
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit",
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset",
+            "type": "string"
+          },
+          {
+            "name": "wp_sub_serie_id",
+            "required": false,
+            "in": "query",
+            "description": "wordpress sub serie ID",
+            "type": "string"
+          },
+          {
+            "name": "variant_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of variant",
+            "type": "string"
+          },
+          {
+            "name": "sub_model_id",
+            "required": false,
+            "in": "query",
+            "description": "ID of sub model",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VariantResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/drive/download": {
+      "get": {
+        "summary": "download",
+        "description": "download file from url",
+        "operationId": "downloadCsv",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/legacy/mapping/best/match": {
+      "post": {
+        "summary": "bestMatchAction",
+        "description": "Find best match according request parameters",
+        "operationId": "bestMatchAction",
+        "parameters": [
+          {
+            "name": "LegacyRequestTDO",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/LegacyRequestTDO"
+            }
+          },
+          {
+            "name": "Find best match",
+            "required": true,
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/LegacyRequestTDO"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/hc": {
+      "get": {
+        "summary": "healthCheckAction",
+        "description": "health check endpoint",
+        "operationId": "healthCheckAction",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/HealthCheckResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/hc": {
+      "get": {
+        "summary": "healthCheckOnBasePathAction",
+        "description": "health check endpoint",
+        "operationId": "healthCheckOnBasePathAction",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/HealthCheckResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/mapping/car/codeDAT/{codeDAT}": {
+      "get": {
+        "summary": "indexDatGroupAction",
+        "description": "Get car template",
+        "operationId": "indexDatGroupAction",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "codeDAT",
+            "required": true,
+            "in": "path",
+            "description": "DATECode"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CarResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/vin": {
+      "get": {
+        "summary": "getVinData",
+        "description": "Get car template by VIN",
+        "operationId": "getVinData",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "vin",
+            "required": true,
+            "in": "query",
+            "description": "VIN Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CarResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/vin/raw": {
+      "get": {
+        "summary": "getRawVinData",
+        "description": "Get car info by VIN",
+        "operationId": "getRawVinData",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "vin",
+            "required": true,
+            "in": "query",
+            "description": "VIN Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CarResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/vin/dat-e-code": {
+      "get": {
+        "summary": "getDatECodeRawData",
+        "description": "Get ",
+        "operationId": "getDatECodeRawData",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "container_id",
+            "required": true,
+            "in": "query",
+            "description": "container id"
+          },
+          {
+            "type": "string",
+            "name": "construction_time",
+            "required": true,
+            "in": "query",
+            "description": "container id"
+          },
+          {
+            "type": "string",
+            "name": "dat_e_code",
+            "required": true,
+            "in": "query",
+            "description": "DATECode Number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CarResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/service/car-makemodel-mapping/api/v1/mapping/rules": {
+      "post": {
+        "summary": "updateRulesAction",
+        "description": "Get car template",
+        "operationId": "updateRulesAction",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RulesResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "summary": "getRulesAction",
+        "description": "Get car template",
+        "operationId": "getRulesAction",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RulesResponseDTO"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "MappingResponseDTO": {
+      "type": "object",
+      "properties": {}
+    },
+    "MakerDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "datGroupId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "imageName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "datGroupId",
+        "title",
+        "imageName",
+        "description"
+      ]
+    },
+    "MakerGroupedResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MakerDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "ModelsDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "datGroupId": {
+          "type": "object"
+        },
+        "makerId": {
+          "type": "number"
+        },
+        "isWordPress": {
+          "type": "boolean"
+        },
+        "serieId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "datGroupId",
+        "makerId",
+        "isWordPress",
+        "serieId",
+        "title",
+        "image"
+      ]
+    },
+    "SerieDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "makerId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ModelsDTO"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "makerId",
+        "title",
+        "models"
+      ]
+    },
+    "SerieResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SerieDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "ProduceYearsDTO": {
+      "type": "object",
+      "properties": {
+        "from_year": {
+          "type": "number"
+        },
+        "to_year": {
+          "type": "number"
+        },
+        "from_month": {
+          "type": "number"
+        },
+        "to_month": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "from_year",
+        "to_year",
+        "from_month",
+        "to_month"
+      ]
+    },
+    "ProduceYearsResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProduceYearsDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "GeneralGroupInformationDTO": {
+      "type": "object",
+      "properties": {
+        "vehicle_type_name": {
+          "type": "array"
+        },
+        "fuel": {
+          "type": "array"
+        },
+        "doors": {
+          "type": "array"
+        },
+        "subModels": {
+          "type": "array",
+          "items": {
+            "type": "array"
+          }
+        }
+      },
+      "required": [
+        "vehicle_type_name",
+        "fuel",
+        "doors",
+        "subModels"
+      ]
+    },
+    "GeneralGroupInformationResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/GeneralGroupInformationDTO"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "ShortSubModelVariantDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "datECode": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "from_year": {
+          "type": "number"
+        },
+        "from_month": {
+          "type": "number"
+        },
+        "to_year": {
+          "type": "number"
+        },
+        "to_month": {
+          "type": "number"
+        },
+        "power_kw": {
+          "type": "string"
+        },
+        "power_ps": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "datECode",
+        "title",
+        "from_year",
+        "from_month",
+        "to_year",
+        "to_month",
+        "power_kw",
+        "power_ps"
+      ]
+    },
+    "SubModelVariantDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "datECode": {
+          "type": "string"
+        },
+        "subModelId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "wpTitle": {
+          "type": "string"
+        },
+        "minPrice": {
+          "type": "string"
+        },
+        "maxPrice": {
+          "type": "string"
+        },
+        "fromPeriod": {
+          "type": "number"
+        },
+        "toPeriod": {
+          "type": "number"
+        },
+        "fromYear": {
+          "type": "number"
+        },
+        "toYear": {
+          "type": "number"
+        },
+        "fromMonth": {
+          "type": "number"
+        },
+        "toMonth": {
+          "type": "number"
+        },
+        "to100": {
+          "type": "string"
+        },
+        "power": {
+          "type": "string"
+        },
+        "maxSpeed": {
+          "type": "string"
+        },
+        "energyEfficiency": {
+          "type": "string"
+        },
+        "consumption": {
+          "type": "string"
+        },
+        "emissions": {
+          "type": "string"
+        },
+        "fuel": {
+          "type": "string"
+        },
+        "cylindersArrangement": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "string"
+        },
+        "torque": {
+          "type": "string"
+        },
+        "transmission": {
+          "type": "string"
+        },
+        "drive": {
+          "type": "string"
+        },
+        "trailerLoadBraked": {
+          "type": "string"
+        },
+        "emission": {
+          "type": "string"
+        },
+        "trailerLoadUnbraked": {
+          "type": "string"
+        },
+        "efficiency": {
+          "type": "string"
+        },
+        "HSN_TS": {
+          "type": "string"
+        },
+        "length": {
+          "type": "string"
+        },
+        "width": {
+          "type": "string"
+        },
+        "height": {
+          "type": "string"
+        },
+        "wheelbase": {
+          "type": "string"
+        },
+        "vehicleTypeName": {
+          "type": "string"
+        },
+        "vehicleTypeId": {
+          "type": "number"
+        },
+        "seats": {
+          "type": "string"
+        },
+        "loadingVolume": {
+          "type": "string"
+        },
+        "bootCapacity": {
+          "type": "string"
+        },
+        "doors": {
+          "type": "number"
+        },
+        "tare": {
+          "type": "string"
+        },
+        "maximumWeightAllowed": {
+          "type": "string"
+        },
+        "seating": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "datECode",
+        "subModelId",
+        "title",
+        "wpTitle",
+        "minPrice",
+        "maxPrice",
+        "fromPeriod",
+        "toPeriod",
+        "fromYear",
+        "toYear",
+        "fromMonth",
+        "toMonth",
+        "to100",
+        "power",
+        "maxSpeed",
+        "energyEfficiency",
+        "consumption",
+        "emissions",
+        "fuel",
+        "cylindersArrangement",
+        "capacity",
+        "torque",
+        "transmission",
+        "drive",
+        "trailerLoadBraked",
+        "emission",
+        "trailerLoadUnbraked",
+        "efficiency",
+        "HSN_TS",
+        "length",
+        "width",
+        "height",
+        "wheelbase",
+        "vehicleTypeName",
+        "vehicleTypeId",
+        "seats",
+        "loadingVolume",
+        "bootCapacity",
+        "doors",
+        "tare",
+        "maximumWeightAllowed",
+        "seating"
+      ]
+    },
+    "MasterDatECodeDTO": {
+      "type": "object",
+      "properties": {
+        "maker": {
+          "type": "string"
+        },
+        "serie": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "sub_model": {
+          "type": "string"
+        },
+        "variant": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "maker",
+        "serie",
+        "model",
+        "sub_model",
+        "variant"
+      ]
+    },
+    "MasterDatECodeResponseDTO": {
+      "type": "object",
+      "properties": {
+        "variant": {
+          "$ref": "#/definitions/SubModelVariantDTO"
+        },
+        "data": {
+          "$ref": "#/definitions/MasterDatECodeDTO"
+        }
+      },
+      "required": [
+        "variant",
+        "data"
+      ]
+    },
+    "MakerResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MakerDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "WordPressSerieDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "makerId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "makerId",
+        "title"
+      ]
+    },
+    "WordPressSerieResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WordPressSerieDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "WordPressSubSerieDTO": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "wpSerieId": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "wpSerieId",
+        "title"
+      ]
+    },
+    "WordPressSubSerieResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WordPressSubSerieDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "VariantResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubModelVariantDTO"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "LegacyRequestTDO": {
+      "type": "object",
+      "properties": {
+        "doors": {
+          "type": "string"
+        },
+        "power": {
+          "type": "string"
+        },
+        "maker": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "sub_model": {
+          "type": "string"
+        },
+        "fuel": {
+          "type": "string"
+        },
+        "vehicle_class": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "year": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "doors",
+        "power",
+        "maker",
+        "model",
+        "sub_model",
+        "fuel",
+        "vehicle_class",
+        "date",
+        "year"
+      ]
+    },
+    "HealthCheckResponseDTO": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "message"
+      ]
+    },
+    "CarResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    },
+    "RulesDTO": {
+      "type": "object",
+      "properties": {}
+    },
+    "RulesResponseDTO": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/RulesDTO"
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  }
+}

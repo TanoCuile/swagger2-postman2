@@ -1,0 +1,10 @@
+{
+  "extends": ["tslint-config-airbnb", "gts/tslint.json"],
+  "rules": {
+    "no-any":false,
+    "no-inferrable-types": false,
+    "max-line-length": [true, 185],
+    "ter-arrow-parens": true,
+    "array-type": [false]
+  }
+}

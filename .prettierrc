@@ -1,0 +1,12 @@
+{
+  "useTabs": false,
+  "eslintIntegration": false,
+  "typescriptEnable": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "singleQuote": true,
+  "bracketSpacing": false
+}

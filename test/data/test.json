@@ -1,0 +1,1017 @@
+{
+  "name": "/",
+  "requestCount": 0,
+  "children": {
+    "service": {
+      "name": "service",
+      "requestCount": 20,
+      "children": {
+        "car-makemodel-mapping": {
+          "name": "car-makemodel-mapping",
+          "requestCount": 20,
+          "children": {
+            "api": {
+              "name": "api",
+              "requestCount": 20,
+              "children": {
+                "v1": {
+                  "name": "v1",
+                  "requestCount": 20,
+                  "children": {
+                    "mapping": {
+                      "name": "mapping",
+                      "requestCount": 4,
+                      "children": {
+                        "car": {
+                          "name": "car",
+                          "requestCount": 1,
+                          "children": {
+                            "codeDAT": {
+                              "name": "codeDAT",
+                              "requestCount": 1,
+                              "children": {
+                                "{codeDAT}": {
+                                  "name": "{codeDAT}",
+                                  "requestCount": 1,
+                                  "children": {},
+                                  "requests": [{
+                                    "name": "get",
+                                    "method": "get",
+                                    "type": "request",
+                                    "path": "service/car-makemodel-mapping/api/v1/mapping/car/codeDAT/{codeDAT}",
+                                    "request": {
+                                      "summary": "indexDatGroupAction",
+                                      "description": "Get car template",
+                                      "operationId": "indexDatGroupAction",
+                                      "parameters": [{
+                                        "type": "string",
+                                        "name": "codeDAT",
+                                        "required": true,
+                                        "in": "path",
+                                        "description": "DATECode"
+                                      }],
+                                      "responses": {
+                                        "200": {
+                                          "description": "",
+                                          "schema": {
+                                            "$ref": "#/definitions/CarResponseDTO"
+                                          }
+                                        }
+                                      },
+                                      "produces": ["application/json"],
+                                      "consumes": ["application/json"]
+                                    },
+                                    "pathParameters": []
+                                  }],
+                                  "type": "group"
+                                }
+                              },
+                              "requests": [],
+                              "type": "group"
+                            }
+                          },
+                          "requests": [],
+                          "type": "group"
+                        },
+                        "rules": {
+                          "name": "rules",
+                          "requestCount": 2,
+                          "children": {},
+                          "requests": [{
+                            "name": "post",
+                            "method": "post",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/mapping/rules",
+                            "request": {
+                              "summary": "updateRulesAction",
+                              "description": "Get car template",
+                              "operationId": "updateRulesAction",
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/RulesResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }, {
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/mapping/rules",
+                            "request": {
+                              "summary": "getRulesAction",
+                              "description": "Get car template",
+                              "operationId": "getRulesAction",
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/RulesResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [{
+                        "name": "get",
+                        "method": "get",
+                        "type": "request",
+                        "path": "service/car-makemodel-mapping/api/v1/mapping",
+                        "request": {
+                          "summary": "mappingAction",
+                          "description": "all makers",
+                          "operationId": "mappingAction",
+                          "parameters": [{
+                            "type": "string",
+                            "name": "source",
+                            "required": true,
+                            "in": "query",
+                            "description": "Name of source (autode or mobilede)"
+                          }, {
+                            "type": "string",
+                            "name": "target",
+                            "required": true,
+                            "in": "query",
+                            "description": "Name of target (autode or mobilede)"
+                          }, {
+                            "type": "string",
+                            "name": "make",
+                            "required": true,
+                            "in": "query",
+                            "description": "Name of make"
+                          }, {
+                            "type": "string",
+                            "name": "model",
+                            "required": true,
+                            "in": "query",
+                            "description": "Name of model"
+                          }],
+                          "responses": {
+                            "200": {
+                              "description": "",
+                              "schema": {
+                                "$ref": "#/definitions/MappingResponseDTO"
+                              }
+                            }
+                          },
+                          "produces": ["application/json"],
+                          "consumes": ["application/json"]
+                        },
+                        "pathParameters": []
+                      }],
+                      "type": "group"
+                    },
+                    "information": {
+                      "name": "information",
+                      "requestCount": 6,
+                      "children": {
+                        "makers": {
+                          "name": "makers",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/information/makers",
+                            "request": {
+                              "summary": "getMakersAction",
+                              "description": "all makers",
+                              "operationId": "getMakersInformation",
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/MakerGroupedResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "models": {
+                          "name": "models",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/information/models",
+                            "request": {
+                              "summary": "getMakersAction",
+                              "description": "all makers",
+                              "operationId": "getAvailableMakersAction",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "month",
+                                "required": false,
+                                "in": "query",
+                                "description": "Month"
+                              }, {
+                                "type": "string",
+                                "name": "year",
+                                "required": false,
+                                "in": "query",
+                                "description": "Year"
+                              }, {
+                                "type": "string",
+                                "name": "maker",
+                                "required": false,
+                                "in": "query",
+                                "description": "Maker name"
+                              }, {
+                                "type": "string",
+                                "name": "maker_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of maker"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/SerieResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "years": {
+                          "name": "years",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/information/years",
+                            "request": {
+                              "summary": "getAvailableYearsAction",
+                              "description": "all available instances of machines for a given period",
+                              "operationId": "getAvailableYearsAction",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "model_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of model"
+                              }, {
+                                "type": "number",
+                                "name": "maker_id",
+                                "required": true,
+                                "in": "query",
+                                "description": "ID of maker"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/ProduceYearsResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "general_grouped_information": {
+                          "name": "general_grouped_information",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/information/general_grouped_information",
+                            "request": {
+                              "summary": "getGeneralGroupedAction",
+                              "description": "all grouped info for a given period. You can pass optional fields to change the response",
+                              "operationId": "getGeneralGroupedAction",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "vehicle_type_name",
+                                "required": false,
+                                "in": "query",
+                                "description": "Name of Vehicle type"
+                              }, {
+                                "type": "string",
+                                "name": "doors",
+                                "required": false,
+                                "in": "query",
+                                "description": "Doors count"
+                              }, {
+                                "type": "string",
+                                "name": "fuel",
+                                "required": false,
+                                "in": "query",
+                                "description": "Fuel type"
+                              }, {
+                                "type": "string",
+                                "name": "sub_model_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of submodel"
+                              }, {
+                                "type": "number",
+                                "name": "month",
+                                "required": true,
+                                "in": "query",
+                                "description": "Month"
+                              }, {
+                                "type": "number",
+                                "name": "year",
+                                "required": true,
+                                "in": "query",
+                                "description": "Year"
+                              }, {
+                                "type": "number",
+                                "name": "model_id",
+                                "required": true,
+                                "in": "query",
+                                "description": "ID of model"
+                              }, {
+                                "type": "number",
+                                "name": "maker_id",
+                                "required": true,
+                                "in": "query",
+                                "description": "ID of maker"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/GeneralGroupInformationResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "variants": {
+                          "name": "variants",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/information/variants",
+                            "request": {
+                              "summary": "getSeriesAction",
+                              "description": "get models by some filters",
+                              "operationId": "getSeriesAction",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "vehicle_type_name",
+                                "required": true,
+                                "in": "query",
+                                "description": "Name of Vehicle type"
+                              }, {
+                                "type": "string",
+                                "name": "doors",
+                                "required": true,
+                                "in": "query",
+                                "description": "Doors count"
+                              }, {
+                                "type": "string",
+                                "name": "fuel",
+                                "required": true,
+                                "in": "query",
+                                "description": "Fuel type"
+                              }, {
+                                "type": "number",
+                                "name": "month",
+                                "required": true,
+                                "in": "query",
+                                "description": "Month"
+                              }, {
+                                "type": "number",
+                                "name": "year",
+                                "required": true,
+                                "in": "query",
+                                "description": "Year"
+                              }, {
+                                "type": "number",
+                                "name": "sub_model_id",
+                                "required": true,
+                                "in": "query",
+                                "description": "ID of submodel"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/ShortSubModelVariantDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "model_variant": {
+                          "name": "model_variant",
+                          "requestCount": 1,
+                          "children": {
+                            "{dat_e_code}": {
+                              "name": "{dat_e_code}",
+                              "requestCount": 1,
+                              "children": {},
+                              "requests": [{
+                                "name": "get",
+                                "method": "get",
+                                "type": "request",
+                                "path": "service/car-makemodel-mapping/api/v1/information/model_variant/{dat_e_code}",
+                                "request": {
+                                  "summary": "getMasterDataForDatECodeAction",
+                                  "description": "Get's master data for DatECode",
+                                  "operationId": "getMasterDataForDatECodeAction",
+                                  "parameters": [{
+                                    "type": "boolean",
+                                    "name": "with_variant_data",
+                                    "required": true,
+                                    "in": "query"
+                                  }, {
+                                    "type": "string",
+                                    "name": "dat_e_code",
+                                    "required": true,
+                                    "in": "path",
+                                    "description": "DatECode code from DatGroup"
+                                  }],
+                                  "responses": {
+                                    "200": {
+                                      "description": "",
+                                      "schema": {
+                                        "$ref": "#/definitions/MasterDatECodeResponseDTO"
+                                      }
+                                    }
+                                  },
+                                  "produces": ["application/json"],
+                                  "consumes": ["application/json"]
+                                },
+                                "pathParameters": []
+                              }],
+                              "type": "group"
+                            }
+                          },
+                          "requests": [],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [],
+                      "type": "group"
+                    },
+                    "tree": {
+                      "name": "tree",
+                      "requestCount": 4,
+                      "children": {
+                        "makers": {
+                          "name": "makers",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "post",
+                            "method": "post",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/tree/makers",
+                            "request": {
+                              "summary": "getMakersAction",
+                              "description": "all makers info",
+                              "operationId": "getMakersAction",
+                              "parameters": [{
+                                "name": "is_word_press",
+                                "required": false,
+                                "in": "query",
+                                "description": "Show only makers for WP",
+                                "type": "string"
+                              }, {
+                                "name": "limit",
+                                "required": false,
+                                "in": "query",
+                                "description": "Limit",
+                                "type": "string"
+                              }, {
+                                "name": "offset",
+                                "required": false,
+                                "in": "query",
+                                "description": "Offset",
+                                "type": "string"
+                              }, {
+                                "name": "maker",
+                                "required": false,
+                                "in": "query",
+                                "description": "Maker name",
+                                "type": "string"
+                              }, {
+                                "name": "maker_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of maker",
+                                "type": "string"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/MakerResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "wp-series": {
+                          "name": "wp-series",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "post",
+                            "method": "post",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/tree/wp-series",
+                            "request": {
+                              "summary": "getWordPressSerieAction",
+                              "description": "all wordpress series info",
+                              "operationId": "getWordPressSerieAction",
+                              "parameters": [{
+                                "name": "limit",
+                                "required": false,
+                                "in": "query",
+                                "description": "Limit",
+                                "type": "string"
+                              }, {
+                                "name": "offset",
+                                "required": false,
+                                "in": "query",
+                                "description": "Offset",
+                                "type": "string"
+                              }, {
+                                "name": "serie_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of serie",
+                                "type": "string"
+                              }, {
+                                "name": "maker_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of maker",
+                                "type": "string"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/WordPressSerieResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "wp-sub-series": {
+                          "name": "wp-sub-series",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "post",
+                            "method": "post",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/tree/wp-sub-series",
+                            "request": {
+                              "summary": "getWordPressSubSeriessAction",
+                              "description": "all wordpress sub series info",
+                              "operationId": "getWordPressSubSeriessAction",
+                              "parameters": [{
+                                "name": "limit",
+                                "required": false,
+                                "in": "query",
+                                "description": "Limit",
+                                "type": "string"
+                              }, {
+                                "name": "offset",
+                                "required": false,
+                                "in": "query",
+                                "description": "Offset",
+                                "type": "string"
+                              }, {
+                                "name": "wp_sub_serie_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "wordpress subserie ID",
+                                "type": "string"
+                              }, {
+                                "name": "wp_serie_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "wordpress serie ID",
+                                "type": "string"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/WordPressSubSerieResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "variants": {
+                          "name": "variants",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "post",
+                            "method": "post",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/tree/variants",
+                            "request": {
+                              "summary": "getVariantsAction",
+                              "description": "all variants info",
+                              "operationId": "getVariantsAction",
+                              "parameters": [{
+                                "name": "limit",
+                                "required": false,
+                                "in": "query",
+                                "description": "Limit",
+                                "type": "string"
+                              }, {
+                                "name": "offset",
+                                "required": false,
+                                "in": "query",
+                                "description": "Offset",
+                                "type": "string"
+                              }, {
+                                "name": "wp_sub_serie_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "wordpress sub serie ID",
+                                "type": "string"
+                              }, {
+                                "name": "variant_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of variant",
+                                "type": "string"
+                              }, {
+                                "name": "sub_model_id",
+                                "required": false,
+                                "in": "query",
+                                "description": "ID of sub model",
+                                "type": "string"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/VariantResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [],
+                      "type": "group"
+                    },
+                    "drive": {
+                      "name": "drive",
+                      "requestCount": 1,
+                      "children": {
+                        "download": {
+                          "name": "download",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/drive/download",
+                            "request": {
+                              "summary": "download",
+                              "description": "download file from url",
+                              "operationId": "downloadCsv",
+                              "responses": {
+                                "200": {
+                                  "description": ""
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [],
+                      "type": "group"
+                    },
+                    "legacy": {
+                      "name": "legacy",
+                      "requestCount": 1,
+                      "children": {
+                        "mapping": {
+                          "name": "mapping",
+                          "requestCount": 1,
+                          "children": {
+                            "best": {
+                              "name": "best",
+                              "requestCount": 1,
+                              "children": {
+                                "match": {
+                                  "name": "match",
+                                  "requestCount": 1,
+                                  "children": {},
+                                  "requests": [{
+                                    "name": "post",
+                                    "method": "post",
+                                    "type": "request",
+                                    "path": "service/car-makemodel-mapping/api/v1/legacy/mapping/best/match",
+                                    "request": {
+                                      "summary": "bestMatchAction",
+                                      "description": "Find best match according request parameters",
+                                      "operationId": "bestMatchAction",
+                                      "parameters": [{
+                                        "name": "LegacyRequestTDO",
+                                        "required": true,
+                                        "in": "body",
+                                        "schema": {
+                                          "$ref": "#/definitions/LegacyRequestTDO"
+                                        }
+                                      }, {
+                                        "name": "Find best match",
+                                        "required": true,
+                                        "in": "body",
+                                        "schema": {
+                                          "$ref": "#/definitions/LegacyRequestTDO"
+                                        }
+                                      }],
+                                      "responses": {
+                                        "200": {
+                                          "description": ""
+                                        }
+                                      },
+                                      "produces": ["application/json"],
+                                      "consumes": ["application/json"]
+                                    },
+                                    "pathParameters": []
+                                  }],
+                                  "type": "group"
+                                }
+                              },
+                              "requests": [],
+                              "type": "group"
+                            }
+                          },
+                          "requests": [],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [],
+                      "type": "group"
+                    },
+                    "hc": {
+                      "name": "hc",
+                      "requestCount": 1,
+                      "children": {},
+                      "requests": [{
+                        "name": "get",
+                        "method": "get",
+                        "type": "request",
+                        "path": "service/car-makemodel-mapping/api/v1/hc",
+                        "request": {
+                          "summary": "healthCheckOnBasePathAction",
+                          "description": "health check endpoint",
+                          "operationId": "healthCheckOnBasePathAction",
+                          "responses": {
+                            "200": {
+                              "description": "",
+                              "schema": {
+                                "$ref": "#/definitions/HealthCheckResponseDTO"
+                              }
+                            }
+                          },
+                          "produces": ["application/json"],
+                          "consumes": ["application/json"]
+                        },
+                        "pathParameters": []
+                      }],
+                      "type": "group"
+                    },
+                    "vin": {
+                      "name": "vin",
+                      "requestCount": 3,
+                      "children": {
+                        "raw": {
+                          "name": "raw",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/vin/raw",
+                            "request": {
+                              "summary": "getRawVinData",
+                              "description": "Get car info by VIN",
+                              "operationId": "getRawVinData",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "vin",
+                                "required": true,
+                                "in": "query",
+                                "description": "VIN Number"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/CarResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        },
+                        "dat-e-code": {
+                          "name": "dat-e-code",
+                          "requestCount": 1,
+                          "children": {},
+                          "requests": [{
+                            "name": "get",
+                            "method": "get",
+                            "type": "request",
+                            "path": "service/car-makemodel-mapping/api/v1/vin/dat-e-code",
+                            "request": {
+                              "summary": "getDatECodeRawData",
+                              "description": "Get ",
+                              "operationId": "getDatECodeRawData",
+                              "parameters": [{
+                                "type": "string",
+                                "name": "container_id",
+                                "required": true,
+                                "in": "query",
+                                "description": "container id"
+                              }, {
+                                "type": "string",
+                                "name": "construction_time",
+                                "required": true,
+                                "in": "query",
+                                "description": "container id"
+                              }, {
+                                "type": "string",
+                                "name": "dat_e_code",
+                                "required": true,
+                                "in": "query",
+                                "description": "DATECode Number"
+                              }],
+                              "responses": {
+                                "200": {
+                                  "description": "",
+                                  "schema": {
+                                    "$ref": "#/definitions/CarResponseDTO"
+                                  }
+                                }
+                              },
+                              "produces": ["application/json"],
+                              "consumes": ["application/json"]
+                            },
+                            "pathParameters": []
+                          }],
+                          "type": "group"
+                        }
+                      },
+                      "requests": [{
+                        "name": "get",
+                        "method": "get",
+                        "type": "request",
+                        "path": "service/car-makemodel-mapping/api/v1/vin",
+                        "request": {
+                          "summary": "getVinData",
+                          "description": "Get car template by VIN",
+                          "operationId": "getVinData",
+                          "parameters": [{
+                            "type": "string",
+                            "name": "vin",
+                            "required": true,
+                            "in": "query",
+                            "description": "VIN Number"
+                          }],
+                          "responses": {
+                            "200": {
+                              "description": "",
+                              "schema": {
+                                "$ref": "#/definitions/CarResponseDTO"
+                              }
+                            }
+                          },
+                          "produces": ["application/json"],
+                          "consumes": ["application/json"]
+                        },
+                        "pathParameters": []
+                      }],
+                      "type": "group"
+                    }
+                  },
+                  "requests": [],
+                  "type": "group"
+                }
+              },
+              "requests": [],
+              "type": "group"
+            }
+          },
+          "requests": [],
+          "type": "group"
+        }
+      },
+      "requests": [],
+      "type": "group"
+    },
+    "hc": {
+      "name": "hc",
+      "requestCount": 1,
+      "children": {},
+      "requests": [{
+        "name": "get",
+        "method": "get",
+        "type": "request",
+        "path": "hc",
+        "request": {
+          "summary": "healthCheckAction",
+          "description": "health check endpoint",
+          "operationId": "healthCheckAction",
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/HealthCheckResponseDTO"
+              }
+            }
+          },
+          "produces": ["application/json"],
+          "consumes": ["application/json"]
+        },
+        "pathParameters": []
+      }],
+      "type": "group"
+    }
+  },
+  "type": "group",
+  "requests": []
+}

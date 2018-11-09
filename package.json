@@ -9,10 +9,11 @@
     "test-unit": "scripts/test-unit.sh"
   },
   "dependencies": {
-    "js-yaml": "3.10.0",
-    "json-schema-faker": "0.4.7",
-    "lodash": "4.17.5",
-    "node-uuid": "^1.4.3",
+    "js-yaml": "^3.12.0",
+    "json-schema-faker": "^0.5.0-rc16",
+    "lodash": "^4.17.11",
+    "node-uuid": "^1.4.8",
+    "reflect-metadata": "^0.1.12",
     "postman-collection": "^3.0.7"
   },
   "repository": {
@@ -22,6 +23,7 @@
   "keywords": [
     "swagger",
     "postman",
+    "typescript",
     "newman"
   ],
   "author": "Postman Labs <help@getpostman.com>",
@@ -31,13 +33,21 @@
   },
   "homepage": "https://github.com/postmanlabs/swagger2-postman2",
   "devDependencies": {
-    "chai": "4.1.2",
+    "@types/js-yaml": "^3.11.2",
+    "@types/lodash": "^4.14.117",
+    "@types/node": "^10.3.5",
+    "@types/postman-collection": "^3.0.1",
+    "chai": "^4.2.0",
     "colors": "1.1.2",
     "eslint": "3.4.0",
     "eslint-plugin-security": "^1.4.0",
+    "gts": "^0.7.1",
     "istanbul": "0.4.5",
-    "mocha": "3.0.2",
-    "nsp": "3.1.0"
+    "mocha": "^5.2.0",
+    "nsp": "^3.2.1",
+    "ts-node": "^6.1.1",
+    "typescript": "^2.9.2",
+    "typescript-json-schema-faker": "0.0.8"
   },
   "com_postman_plugin": {
     "type": "importer",
